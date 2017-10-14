@@ -14,3 +14,7 @@ export function welcomeIntent() {
 export function unhandled() {
   return 'input.unknown'
 }
+
+export function visitLocationSelected() {
+  return 'actions.intent.OPTION'
+}

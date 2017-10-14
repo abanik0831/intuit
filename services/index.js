@@ -141,15 +141,15 @@ export async function confirmpnr(sessionId, pnr) {
  *
  */
 
-// export async function getTopThreeVisitDestinations() {
-//   const options = {
-//     method: 'GET',
-//     url: 'https://apim.expedia.com/x/activities/search?location=Rome&key=531bd696-5113-469c-8086-39073fe89517'
-//   }
-//
-//   console.log('hello wrold....')
-//   const data = await request(options)
-//
-//   console.log(data)
-//   return data.activities.slice(0,3)
-// }
+export async function getTopThreeVisitDestinations() {
+  const options = {
+    method: 'GET',
+    url: 'https://apim.expedia.com/x/activities/search?location=Rome&key=531bd696-5113-469c-8086-39073fe89517',
+    json: true,
+  }
+
+  console.log('hello wrold....')
+  const data = await request(options)
+
+  return data.activities.slice(0, 3)
+}
