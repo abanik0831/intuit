@@ -1,0 +1,142 @@
+[
+  {
+    "id": "6771727f-5052-453d-bf1b-ab351ba3c7a0",
+    "data": [
+      {
+        "text": "travel from ",
+        "userDefined": false
+      },
+      {
+        "text": "singapore",
+        "alias": "geo-country",
+        "meta": "@sys.geo-country",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "kolkata",
+        "alias": "geo-city1",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1507942042
+  },
+  {
+    "id": "900686d4-ae09-4b06-a389-8515c3569ac3",
+    "data": [
+      {
+        "text": "travel from ",
+        "userDefined": false
+      },
+      {
+        "text": "kuwait",
+        "alias": "geo-country",
+        "meta": "@sys.geo-country",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "kolkata",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1507942042
+  },
+  {
+    "id": "2d592092-9ecc-4bb1-a376-599b77fd359e",
+    "data": [
+      {
+        "text": "i want to fly from ",
+        "userDefined": false
+      },
+      {
+        "text": "Singapore",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": true
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "San Jose",
+        "alias": "geo-city1",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "845ca676-96f0-42cf-b4b4-276f89cdd353",
+    "data": [
+      {
+        "text": "get me tickets from ",
+        "userDefined": false
+      },
+      {
+        "text": "San Francisco",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Altoona",
+        "alias": "geo-city1",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8d4b46bd-f0ba-4819-97a5-4eb2aadf2e31",
+    "data": [
+      {
+        "text": "search flight tickets from ",
+        "userDefined": false
+      },
+      {
+        "text": "San Francisco",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      },
+      {
+        "text": " to ",
+        "userDefined": false
+      },
+      {
+        "text": "Tokyo",
+        "alias": "geo-city1",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

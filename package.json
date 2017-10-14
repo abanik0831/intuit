@@ -19,7 +19,7 @@
     "twig": "0.10.1"
   },
   "engines": {
-    "node": "4.0.0"
+    "node": "8.0.0"
   },
   "repository": {
     "type": "git",
@@ -49,7 +49,18 @@
     "leasot": "4.2.0",
     "mocha": "3.1.2",
     "nodemon": "1.11.0",
-    "todo-webpack-plugin": "1.5.1"
+    "todo-webpack-plugin": "1.5.1",
+    "body-parser": "^1.18.2",
+    "actions-on-google": "^1.5.1",
+    "chalk": "^2.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-lodash": "^3.2.6",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.13.0"
   },
   "bugs": {
     "url": "https://github.com/mikeerickson/node-express-es6-starter/issues"

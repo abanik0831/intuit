@@ -1,3 +1,5 @@
+require('babel-core/register')
+require('babel-polyfill')
 
 'use strict'
 
@@ -5,25 +7,18 @@ const express = require('express')
 const app     = express()
 const msg     = require('gulp-messenger')
 const chalk   = require('chalk')
-const Twig    = require('twig')
 const _       = require('lodash')
+const bodyParser = require('body-parser')
+const googleAssitant = require('./googleAssistant')
 
-var twig = Twig.twig;
-
-// This section is optional and used to configure twig.
-app.set('twig options', {
-    strict_variables: false
-});
-
-app.set('port', (process.env.PORT || 3000))
+app.set('port', (process.env.PORT || 8080))
 app.use(express.static(__dirname + '/public'))  // static directory
+app.use(bodyParser.json({type: 'application/json'}))
 
 // Custom routes (not convered by static files, uses twig template engine)
-app.get('/', (req, res) => {
-  res.render('index.twig', {
-    firstName: 'Mike',
-    lastName: 'Erickson'
-  });
+app.post('/', (req, res) => {
+  console.log('fdg')
+  googleAssitant.apiAssistant(req, res)
 });
 
 // lets startup this puppy
