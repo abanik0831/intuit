@@ -3,6 +3,10 @@ export function searchFlights() {
   return 'search_flights'
 }
 
+export function bookFlight() {
+  return 'book_flight'
+}
+
 export function welcomeIntent() {
   return 'input.welcome'
 }
