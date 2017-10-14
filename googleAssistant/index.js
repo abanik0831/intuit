@@ -41,7 +41,21 @@ export function apiAssistant(request, response) {
     // console.log(confirmpnr)
     //return assistant.ask('in progress...')
   
+    const visitCity = await services.getTopThreeVisitDestinations()
   
+    console.log(visitCity.length)
+    
+    // [
+    //   app.buildOptionItem('title',
+    //     ['synonym of KEY_ONE 1', 'synonym of KEY_ONE 2'])
+    //     .setTitle('Number one').setDescription('hello world')
+    //     .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore'),
+    //   app.buildOptionItem('title 2',
+    //     ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
+    //     .setTitle('Number two').setDescription('hello world two')
+    //     .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore')
+    // ]
+    
     // assistant.askWithCarousel('Which of these looks good?',
     //   assistant.buildCarousel().addItems(
     //     assistant.buildOptionItem('another_choice', ['Another choice']).
@@ -54,35 +68,49 @@ export function apiAssistant(request, response) {
     //     .addItems(assistant.buildOptionItem('another_choice', ['Another choice']).setTitle('hi').setDescription('hello'))
         // .addItems(list[2])http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg
         // .addItems(list[3])
-    // app.askWithCarousel('Which of these looks good?',
-    //   app.buildCarousel()
-    //     .addItems([
-    //       app.buildOptionItem('title',
-    //         ['synonym of KEY_ONE 1', 'synonym of KEY_ONE 2'])
-    //         .setTitle('Number one').setDescription('hello world')
-    //         .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore'),
-    //       app.buildOptionItem('title 2',
-    //         ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
-    //         .setTitle('Number two').setDescription('hello world two')
-    //         .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore')
-    //     ]))
+    app.askWithCarousel('Which of these looks good?',
+      app.buildCarousel()
+        .addItems(visitCity.map((cityInfo, index) => {
+          console.log('how many times u come here?')
+          console.log(cityInfo)
+          let a
+          if (index === 0) {
+            a = 'one'
+          }
+          
+          if (index === 1) {
+            a = 'two'
+          }
+          
+          if (index === 2) {
+            a = 'three'
+          }
+          
+          console.log(`clicked_${a}`)
+          
+          return app.buildOptionItem(`clicked_${a}`,
+            ['clicked one', 'clicked two', 'clicked three'])
+            .setTitle(cityInfo.title)
+            .setDescription('visit rome')
+            .setImage(`http:${cityInfo.imageUrl}`, 'singapore')
+        })))
+    
+    // app.ask(app.buildRichResponse()
+    //   .addSimpleResponse({speech: 'I found the hello world', displayText: 'I found the test this'})
+    //   .addBasicCard(assistant.buildBasicCard('testing')
+    //     .setTitle('speechless')
+    //     // .setBodyText(stringUtil(data.description).stripTags().s)
+    //     .addButton('Learn more', 'https://google.com')
+    //     .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore', 250, 250))
+    //   .addSimpleResponse({speech: 'Would you like to show the next event of ?', displayText: 'Would you like to show the next event of  ?'})
+    //   .addSuggestions(['Buy', 'No thanks']))
+    
+    
+  }
   
-    
-    // const visitCity = await services.getTopThreeVisitDestinations()
-    //
-    // console.log(JSON.stringify(visitCity))
-    
-    app.ask(app.buildRichResponse()
-      .addSimpleResponse({speech: 'I found the hello world', displayText: 'I found the test this'})
-      .addBasicCard(assistant.buildBasicCard('testing')
-        .setTitle('speechless')
-        // .setBodyText(stringUtil(data.description).stripTags().s)
-        .addButton('Learn more', 'https://google.com')
-        .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore', 250, 250))
-      .addSimpleResponse({speech: 'Would you like to show the next event of ?', displayText: 'Would you like to show the next event of  ?'})
-      .addSuggestions(['Buy', 'No thanks']))
-    
-    
+  async function locationSelected(assistant) {
+    console.log(assistant)
+    assistant.ask('ok i got it working')
   }
 
   async function extendSession(sessionId) {
@@ -106,6 +134,7 @@ export function apiAssistant(request, response) {
   actionMap.set(apiAiActions.welcomeIntent(), greetUser)
   actionMap.set(apiAiActions.searchFlights(), searchFlights)
   actionMap.set(apiAiActions.bookFlight(), bookFlight)  
+  actionMap.set(apiAiActions.visitLocationSelected(), locationSelected)
   actionMap.set(apiAiActions.unhandled(), unhandle)
   
   assistant.handleRequest(actionMap)
