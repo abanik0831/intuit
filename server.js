@@ -17,7 +17,6 @@ app.use(bodyParser.json({type: 'application/json'}))
 
 // Custom routes (not convered by static files, uses twig template engine)
 app.post('/', (req, res) => {
-  console.log('fdg')
   googleAssitant.apiAssistant(req, res)
 });
 
