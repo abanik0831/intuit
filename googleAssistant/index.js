@@ -157,6 +157,11 @@ export function apiAssistant(request, response) {
     return assistant.ask('failed')
   }
   
+  async function checkIn(assistant) {
+    const checkIn = await services.checkIn()
+    return assistant.ask("Check in successful!")
+  }
+
   let actionMap = new Map()
   
   actionMap.set(apiAiActions.welcomeIntent(), greetUser)
@@ -165,6 +170,7 @@ export function apiAssistant(request, response) {
   // actionMap.set(apiAiActions.visitLocationSelected(), locationSelected)
   actionMap.set('action.input', optionIntent)
   actionMap.set(apiAiActions.unhandled(), unhandle)
+  actionMap.set(apiAiActions.checkIn(), checkIn)
   
   assistant.handleRequest(actionMap)
 }

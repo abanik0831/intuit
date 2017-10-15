@@ -29,6 +29,84 @@ export async function extendSession(sessionId) {
   
 }
 
+export async function checkIn() {
+  var params = {
+    "request": {
+       "pnr": "RVA7GY"
+    },
+    "clientUUID": "daredevil123"
+  }
+   const options = {
+      method: 'POST',
+      url: 'https://apidev.singaporeair.com/appchallenge/checkin/getpassenger',
+      headers: {
+        'content-type': 'application/json',
+        'x-api-key': 'du1yO8KLZm9PfFeg6OHQW8CFcpK1RMym3JXp78Uk',
+      },
+      body: JSON.stringify(params)
+    }
+    console.log('get passenger api called')
+    try {
+      const data = await request(options)
+      const dataJson = JSON.parse(data)
+      console.log(dataJson.response)
+      var params2 = {
+        "clientUUID":"daredevil123",
+        "request": {
+          "flights": [
+            {
+              "flightIDs": [
+                "2301D9F90000ABE4"
+              ],
+              "originAirport": {
+                "airportCode": "SIN",
+                "airportTerminal": "3"
+              },
+              "destinationAirport": {
+                "airportCode": "FCO",
+                "airportTerminal": "3"
+              },
+            "flightNumber": "366",
+              "departureDateTime": "2017-11-01T01:55:00"
+            }
+          ],
+          "passengers": [
+            {
+              "passengerID": "2301C9F900006118",
+              "firstName": "SIA",
+              "title": "MISS",
+              "gender": "F",
+              "flightIDs": [
+                "2301D9F90000ABE4"
+              ]
+            }
+          ]
+        },
+      }
+      const options2 = {
+        method: 'POST',
+        url: 'https://apidev.singaporeair.com/appchallenge/checkin/checkin',
+        headers: {
+          'content-type': 'application/json',
+          'x-api-key': 'du1yO8KLZm9PfFeg6OHQW8CFcpK1RMym3JXp78Uk',
+        },
+        body: JSON.stringify(params2)
+      }
+      
+      console.log('check in api called')
+      try {
+        const data2 = await request(options2)
+        console.log(data2)
+        return data2
+      } catch (err) {
+        console.log(err)
+      }
+      return data
+    } catch (err) {
+      console.log(err)
+    } 
+}
+
 export async function searchFlights() {
   console.log("BEFORE1")
   var params = {  
