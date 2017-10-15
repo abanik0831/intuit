@@ -62,6 +62,7 @@ export function apiAssistant(request, response) {
   }
 
   async function bookFlight(app) {
+    console.log('am i triggered again')
     console.log('hello...')
     const extendSession = await services.extendSession('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
     const createpnr = await services.createpnr('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
@@ -114,31 +115,30 @@ export function apiAssistant(request, response) {
             a = 'three'
           }
           
-          console.log(`clicked_${a}`)
-          
           return app.buildOptionItem(`clicked_${a}`,
             ['clicked one', 'clicked two', 'clicked three'])
             .setTitle(cityInfo.title)
             .setDescription('visit rome')
             .setImage(`http:${cityInfo.imageUrl}`, 'singapore')
-        })))
-    
-    // app.ask(app.buildRichResponse()
-    //   .addSimpleResponse({speech: 'I found the hello world', displayText: 'I found the test this'})
-    //   .addBasicCard(assistant.buildBasicCard('testing')
-    //     .setTitle('speechless')
-    //     // .setBodyText(stringUtil(data.description).stripTags().s)
-    //     .addButton('Learn more', 'https://google.com')
-    //     .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore', 250, 250))
-    //   .addSimpleResponse({speech: 'Would you like to show the next event of ?', displayText: 'Would you like to show the next event of  ?'})
-    //   .addSuggestions(['Buy', 'No thanks']))
-    
+        })
+        )
+    )
     
   }
   
-  async function locationSelected(assistant) {
-    console.log(assistant)
-    assistant.ask('ok i got it working')
+  async function optionIntent(assistant) {
+    console.log(assistant.getSelectedOption())
+    if (assistant.getSelectedOption() === 'clicked_one') {
+      return assistant.ask(assistant.buildRichResponse()
+        .addSimpleResponse({speech: 'I found the hello world', displayText: 'I found the test this'})
+        .addBasicCard(assistant.buildBasicCard('testing')
+          .setTitle('speechless')
+          // .setBodyText(stringUtil(data.description).stripTags().s)
+          .addButton('Learn more', 'https://google.com')
+          .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore', 250, 250))
+        .addSimpleResponse({speech: 'Would you like to show the next event of ?', displayText: 'Would you like to show the next event of  ?'})
+        .addSuggestions(['Buy', 'No thanks']))
+    }
   }
 
   async function extendSession(sessionId) {
@@ -162,7 +162,8 @@ export function apiAssistant(request, response) {
   actionMap.set(apiAiActions.welcomeIntent(), greetUser)
   actionMap.set(apiAiActions.searchFlights(), searchFlights)
   actionMap.set(apiAiActions.bookFlight(), bookFlight)  
-  actionMap.set(apiAiActions.visitLocationSelected(), locationSelected)
+  // actionMap.set(apiAiActions.visitLocationSelected(), locationSelected)
+  actionMap.set('action.input', optionIntent)
   actionMap.set(apiAiActions.unhandled(), unhandle)
   
   assistant.handleRequest(actionMap)
