@@ -18,3 +18,7 @@ export function unhandled() {
 export function visitLocationSelected() {
   return 'actions.intent.OPTION'
 }
+
+export function checkIn() {
+  return 'check_in'
+}
