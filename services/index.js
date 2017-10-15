@@ -24,9 +24,52 @@ export async function extendSession(sessionId) {
     const data = await request(options)
     return data
   } catch (err) {
-    console.log(err)
+    // console.log(err)
   }
   
+}
+
+export async function searchFlights() {
+  console.log("BEFORE1")
+  var params = {  
+  "clientUUID":"daredevil123",
+    "request":{  
+      "itineraryDetails":[  
+         {  
+            "originAirportCode":"SIN",
+            "destinationAirportCode":"FCO",
+            "departureDate": "2017-11-01"
+         },
+         {  
+            "originAirportCode":"FCO",
+            "destinationAirportCode":"SIN",
+            "departureDate": "2017-11-08"
+         }
+      ],
+      "cabinClass":"Y",
+      "adultCount":1
+    }
+  };
+  console.log("BEFORE2")
+  console.log(params.request.itineraryDetails[0]);
+  const options = {
+    method: 'POST',
+    url: 'https://apidev.singaporeair.com/appchallenge/flight/search',
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': 'du1yO8KLZm9PfFeg6OHQW8CFcpK1RMym3JXp78Uk',
+    },
+    body: JSON.stringify(params)
+  }
+  
+  console.log('api called')
+  try {
+    const data = await request(options)
+    // console.log(data)
+    return data
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export async function createpnr(sessionId) {

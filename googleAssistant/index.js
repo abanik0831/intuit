@@ -6,20 +6,68 @@ export function apiAssistant(request, response) {
   const assistant = new ApiAiAssistant({ request: request, response: response })
   
   async function greetUser(assistant) {
-    return assistant.ask('hello singapore airlines!')
+    console.log(assistant)
+    return assistant.ask('hi singapore airlines!')
   }
   
   async function searchFlights(assistant) {
-    return assistant.ask('found it!')
+    console.log(assistant.data)
+    if (assistant.data !== undefined) {
+      // console.log(assistant.data["geo-country.original"])
+      // console.log(assistant.data["geo-city1.original"])
+      console.log("BEFORE")
+      const searchFlights = await services.searchFlights()
+      console.log("AFTER")
+      assistant.ask(assistant.buildRichResponse()
+      .addSimpleResponse({speech: 'I found some flights matching your request!', displayText: 'I found some flights matching your request!'})
+      .addBasicCard(assistant.buildBasicCard('<h4>SIN to FCO</h4> <div style="text-align:center"> <b>Departure:</b> 2017-11-01 1:55 am <br/> <b>Arrival:</b> 2017-11-08 8:10 am <br/> <h4>FCO to SIN</h4> <b>Departure:</b> 2017-11-08 11:15 am <br/> <b>Arrival</b>: 2017-11-09 6:05 am </div> <br/> $1303')
+        //.setTitle('Round Trip to FCO')
+        // .setBodyText(stringUtil(data.description).stripTags().s)
+        // .addButton('Learn more', 'https://google.com')
+      .setImage('http://media.therakyatpost.com/wp-content/uploads/2016/06/SIA-A380-940x470.jpg', 'singapore', 250, 250))
+      .addSimpleResponse({speech: 'Would you like to buy this ticket?', displayText: 'Would you like to buy this ticket?'})
+      .addSuggestions(['Buy the ticket']))
+      // console.log("test")
+      // assistant.askWithList(assistant.buildRichResponse()
+      // .addSimpleResponse({speech: 'I found some flights matching your request!', displayText: 'I found some flights matching your request!'})
+      // .addBasicCard(assistant.buildBasicCard('<h4>SIN to FCO</h4> <div style="text-align:center"> <b>Departure:</b> 2017-11-01 1:55 am <br/> <b>Arrival:</b> 2017-11-08 8:10 am <br/> <h4>FCO to SIN</h4> <b>Departure:</b> 2017-11-08 11:15 am <br/> <b>Arrival</b>: 2017-11-09 6:05 am </div> <br/> $1303')
+      //   //.setTitle('Round Trip to FCO')
+      //   // .setBodyText(stringUtil(data.description).stripTags().s)
+      //   // .addButton('Learn more', 'https://google.com')
+      // .setImage('http://media.therakyatpost.com/wp-content/uploads/2016/06/SIA-A380-940x470.jpg', 'singapore', 250, 250))
+      // .addSimpleResponse({speech: 'Would you like to buy this ticket?', displayText: 'Would you like to buy this ticket?'}),
+      //   assistant.buildList('List title')
+      //  .addItems([
+      //    assistant.buildOptionItem('ONE',
+      //      ['synonym of KEY_ONE 1', 'synonym of KEY_ONE 2'])
+      //      .setTitle('Title of First List Item'),
+      //    assistant.buildOptionItem('TWO',
+      //      ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
+      //      .setTitle('Title of Second List Item'),
+      //  ]));
+    // assistant.askWithList('Which of these looks good?',
+    // assistant.buildList('List title')
+    //  .addItems([
+    //    assistant.buildOptionItem('ONE',
+    //      ['synonym of KEY_ONE 1', 'synonym of KEY_ONE 2'])
+    //      .setTitle('Title of First List Item'),
+    //    assistant.buildOptionItem('TWO',
+    //      ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
+    //      .setTitle('Title of Second List Item'),
+    //  ]));
+    } else {
+      console.log('hiiii')
+      return assistant.ask('found it!')
+    }
   }
 
   async function bookFlight(app) {
     console.log('am i triggered again')
     console.log('hello...')
-    // const extendSession = await services.extendSession('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
-    // const createpnr = await services.createpnr('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
-    // const confirmpnr = await services.confirmpnr('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914', 'TBFVRC')
-    // console.log(confirmpnr)
+    const extendSession = await services.extendSession('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
+    const createpnr = await services.createpnr('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914')
+    const confirmpnr = await services.confirmpnr('JSESSIONID=0mAckWyIQgKTirSL9ijsXo15yprsrP1e2du7nEAnB87WnzUAul18!-548878662!-1110320914', 'TBFVRC')
+    console.log(confirmpnr)
     //return assistant.ask('in progress...')
   
     const visitCity = await services.getTopThreeVisitDestinations()

@@ -16,6 +16,7 @@
     "express": "4.14.0",
     "gulp-messenger": "0.25.3",
     "lodash": "4.17.2",
+    "request": "^2.83.0",
     "twig": "0.10.1"
   },
   "engines": {
