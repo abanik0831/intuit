@@ -10,6 +10,7 @@ const chalk   = require('chalk')
 const _       = require('lodash')
 const bodyParser = require('body-parser')
 const googleAssitant = require('./googleAssistant')
+const db = require('./db/db')
 
 app.set('port', (process.env.PORT || 8080))
 app.use(express.static(__dirname + '/public'))  // static directory
