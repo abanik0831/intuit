@@ -4,9 +4,17 @@ export function welcomeIntent() {
 }
 
 export function jobFinder() {
-  return 'job_finder'
+  return 'action.finder'
 }
 
 export function help() {
   return 'help.intent'
+}
+
+export function optionIntent() {
+  return 'action.input'
+}
+
+export function purchase() {
+  return 'action.purchase'
 }

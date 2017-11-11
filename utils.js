@@ -1,4 +1,4 @@
-function numToStars(numStars) {
+export function numToStars(numStars) {
     const arr = [];
     for (let i = 0; i < 5; i++) {
         if (i < numStars) {
@@ -10,6 +10,3 @@ function numToStars(numStars) {
     return arr.join('');
 }
 
-export {
-    numToStars,
-};

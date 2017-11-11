@@ -12,7 +12,7 @@
         {
             "name": "Jane Doe",
             "skills": ["barista"],
-            "rating": 4,
+            "rating": 2,
             "photo": "http://reductress.com/wp-content/uploads/2015/11/baristadoula-820x500.jpg",
             "location": "Santa Cruz",
             "hourlyRate": "19",
@@ -21,7 +21,7 @@
         {
             "name": "David Frum",
             "skills": ["electrician"],
-            "rating": 4.5,
+            "rating": 3,
             "photo": "https://cdn.trade-schools.net/static/graphics/become-an-electrician-1.jpg",
             "location": "Redwood City",
             "hourlyRate": "18",
@@ -39,7 +39,7 @@
         {
             "name": "Gary Horton",
             "skills": ["sanitation"],
-            "rating": 5,
+            "rating": 4,
             "photo": "http://www.proprofs.com/quiz-school/user_upload/ckeditor/cleaner.jpg",
             "location": "San Jose",
             "hourlyRate": "28",
