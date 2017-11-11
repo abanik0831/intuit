@@ -2,7 +2,7 @@ import { ApiAiAssistant } from 'actions-on-google'
 import * as apiAiActions from '../apiActions'
 import  * as services from '../services'
 import storeData from '../db/sample_data.json'
-import numToStars from '../utils';
+import { numToStars } from '../utils';
 
 export function apiAssistant(request, response) {
   const assistant = new ApiAiAssistant({ request: request, response: response })
@@ -19,7 +19,7 @@ export function apiAssistant(request, response) {
     // return assistant.ask('hih hihihi')
     return assistant.askWithCarousel('Which of these looks good?',
       assistant.buildCarousel()
-        .addItems(storeData.data.map((info, index) => {
+        .addItems(storeData.workers.map((info, index) => {
           console.log(info)
             // let a
             // if (index === 0) {

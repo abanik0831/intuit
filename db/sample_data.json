@@ -1,12 +1,13 @@
 {
-    "data": [
+    "workers": [
         {
             "name": "John Mack",
             "skills": ["sanitation"],
             "rating": 4.5,
             "photo": "https://images.locanto.com.au/2435939244/I-am-looking-for-a-cleaner-start-ASAP_1.png",
             "location": "San Jose",
-            "hourlyRate": "15"
+            "hourlyRate": "15",
+            "phone": ""
         },
         {
             "name": "Jane Doe",
@@ -14,7 +15,8 @@
             "rating": 4,
             "photo": "http://reductress.com/wp-content/uploads/2015/11/baristadoula-820x500.jpg",
             "location": "Santa Cruz",
-            "hourlyRate": "19"
+            "hourlyRate": "19",
+            "phone": ""
         },
         {
             "name": "David Frum",
@@ -22,7 +24,8 @@
             "rating": 4.5,
             "photo": "https://cdn.trade-schools.net/static/graphics/become-an-electrician-1.jpg",
             "location": "Redwood City",
-            "hourlyRate": "18"
+            "hourlyRate": "18",
+            "phone": ""
         },
         {
             "name": "Mary Mason",
@@ -30,7 +33,8 @@
             "rating": 5,
             "photo": "http://www.businessmediagroup.co.uk/wp-content/uploads/2015/12/Virtual-Assistant.jpg",
             "location": "Sunnyvale",
-            "hourlyRate": "40"
+            "hourlyRate": "40",
+            "phone": ""
         },
         {
             "name": "Gary Horton",
@@ -38,7 +42,8 @@
             "rating": 5,
             "photo": "http://www.proprofs.com/quiz-school/user_upload/ckeditor/cleaner.jpg",
             "location": "San Jose",
-            "hourlyRate": "28"
+            "hourlyRate": "28",
+            "phone": ""
         },
         {
             "name": "Cindy Ng",
@@ -46,7 +51,12 @@
             "rating": 5,
             "photo": "https://previews.123rf.com/images/ferli/ferli1202/ferli120200113/12371610-picture-of-beautiful-woman-with-cleaning-sweep-Stock-Photo-maid-cleaning-asian.jpg",
             "location": "San Jose",
-            "hourlyRate": "14"
+            "hourlyRate": "14",
+            "phone": ""
         }
-    ]
+    ],
+    "companies": [{
+        "name": "Intuit",
+        "location": "2600 Marine Way, Mountain View, CA 94043"
+    }]
 }

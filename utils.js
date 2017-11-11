@@ -10,6 +10,6 @@ function numToStars(numStars) {
     return arr.join('');
 }
 
-module.exports = {
+export {
     numToStars,
 };

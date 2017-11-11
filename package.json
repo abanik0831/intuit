@@ -17,9 +17,11 @@
     "express": "4.14.0",
     "gulp-messenger": "0.25.3",
     "lodash": "4.17.2",
+    "mongodb": "^2.2.33",
+    "nexmo": "^2.0.2",
     "request": "^2.83.0",
-    "twig": "0.10.1",
-    "mongodb": "^2.2.33"
+    "request-promise": "^4.2.2",
+    "twig": "0.10.1"
   },
   "engines": {
     "node": "8.0.0"
