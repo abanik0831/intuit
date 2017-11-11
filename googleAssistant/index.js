@@ -2,6 +2,7 @@ import { ApiAiAssistant } from 'actions-on-google'
 import * as apiAiActions from '../apiActions'
 import  * as services from '../services'
 import storeData from '../db/sample_data.json'
+import numToStars from '../utils';
 
 export function apiAssistant(request, response) {
   const assistant = new ApiAiAssistant({ request: request, response: response })
