@@ -19,6 +19,15 @@
             "phone": ""
         },
         {
+            "name": "Mark Stuart",
+            "skills": ["barista"],
+            "rating": 2,
+            "photo": "http://www.mycafesupplies.com.au/resources/wp-content/uploads/2013/10/barista-training-5.jpg",
+            "location": "Santa Cruz",
+            "hourlyRate": "23",
+            "phone": ""
+        },
+        {
             "name": "David Frum",
             "skills": ["electrician"],
             "rating": 3,

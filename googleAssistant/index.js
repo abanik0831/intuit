@@ -3,6 +3,7 @@ import * as apiAiActions from '../apiActions'
 import  * as services from '../services'
 import storeData from '../db/sample_data.json'
 import { numToStars } from '../utils'
+import { sendSms } from '../nexmo/nexmo'
 
 export function apiAssistant(request, response) {
   const assistant = new ApiAiAssistant({ request: request, response: response })
@@ -12,31 +13,18 @@ export function apiAssistant(request, response) {
   }
   
   function jobFinder(assistant) {
-    // return assistant.ask('this is job finder')
-    console.log('hello world')
-    console.log(storeData)
-    const mapi = [1,3,4,5]
-    // return assistant.ask('hih hihihi')
+  
+    assistant.data.jobs = assistant.getArgument('jobs')
+    
+    const storeDataFilter = storeData.workers.filter((item, index) => {
+      return assistant.data.jobs === item.skills[0]
+    })
+    
     return assistant.askWithCarousel('Which of these looks good?',
       assistant.buildCarousel()
-        .addItems(storeData.workers.map((info, index) => {
-          console.log(info)
-            let a
-            if (index === 0) {
-              a = 'one'
-            }
-
-            if (index === 1) {
-              a = 'two'
-            }
-
-            if (index === 2) {
-              a = 'three'
-            }
-
+        .addItems(storeDataFilter.map((info, index) => {
           const stars = numToStars(info.rating)
-
-            return assistant.buildOptionItem(`clicked_${a}`,
+            return assistant.buildOptionItem(`${index}`,
               ['clicked one', 'clicked two', 'clicked three'])
               .setTitle(info.name)
               .setDescription(`$${info.hourlyRate}/hr  \n ${stars}`)
@@ -47,27 +35,33 @@ export function apiAssistant(request, response) {
   }
   
   function optionIntent(assistant) {
-    console.log('hi')
-   //  console.log(assistant.getSelectedOption())
-    // if (assistant.getSelectedOption() === 'clicked_one') {
-      return assistant.ask(assistant.buildRichResponse()
-        .addSimpleResponse({speech: 'I found the hello world', displayText: 'I found the test this'})
-        .addBasicCard(assistant.buildBasicCard('testing')
-          .setTitle('speechless')
-          // .setBodyText(stringUtil(data.description).stripTags().s)
-          .addButton('Learn more', 'https://google.com')
-          .setImage('http://www.travelzoo.com/blog/wp-content/uploads/2017/03/Singapore_shutterstock_313516310.jpg', 'singapore', 250, 250))
-        .addSimpleResponse({speech: 'Would you like to show the next event of ?', displayText: 'Would you like to show the next event of  ?'})
-        .addSuggestions(['Buy', 'No Thanks']))
-    // }
+    const storeDataFilter = storeData.workers.filter((item, index) => {
+      return assistant.data.jobs === item.skills[0]
+    })
+    
+    const selectedOption = Object.keys(storeDataFilter)[assistant.getSelectedOption()]
+    const option = storeDataFilter[selectedOption]
+    
+    console.log(selectedOption)
+    return assistant.ask(assistant.buildRichResponse()
+      .addSimpleResponse({speech: `Okay, would you like to request service from ${option.name} for $${option.hourlyRate}`, displayText: `Okay, would you like to request service from ${option.name} for $${option.hourlyRate}`})
+      .addBasicCard(assistant.buildBasicCard(`${option.name} for $${option.hourlyRate}`)
+        .setTitle(`Your service request`)
+        // .setBodyText(stringUtil(data.description).stripTags().s)
+        .addButton('Learn more', 'https://google.com')
+        .setImage(option.photo, 'singapore', 250, 250))
+      // .addSimpleResponse({speech: `Okay, would you like to request service from ${option.name} for $${option.hourlyRate}`, displayText: `Okay, would you like to request service from ${option.name} for $${option.hourlyRate}`})
+      .addSuggestions(['Yes', 'No Thanks']))
   }
 
   function helper(assistant) {
-    console.log('helper!')
     return assistant.ask('i can help you')
   }
   
-  function purchaseType(assistant) {
+  async function purchaseType(assistant) {
+    // to, companyName, location, time
+    await sendSms('14089095234', 'Intuit', '2600 Marine Way, Mountain View, CA 94043', '5:00 PM PST')
+    
     return assistant.ask('purchased')
   }
 
