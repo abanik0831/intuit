@@ -1,5 +1,4 @@
 const assert = require('assert');
-const bcrypt = require('bcrypt');
 const ObjectID = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
 
@@ -45,18 +44,14 @@ function getById(collection, id) {
 
 function insertOne(collection, obj) {
     return new Promise((resolve, reject) => {
-        bcrypt.hash(obj.passphrase, 10, (err, hash) => {
-            // Store hash in database
-            obj.passphrase = hash
-            db.collection(collection).insertOne(obj, (err, result) => {
-            if (err) {
-                console.log('err', err);
-                return reject(err);
-            }
-            return resolve(result);
-            });
-        })
-    });
+        db.collection(collection).insertOne(obj, (err, result) => {
+        if (err) {
+            console.log('err', err);
+            return reject(err);
+        }
+        return resolve(result);
+        });
+    })
 }
 
 function updateOne(collection, obj) {
