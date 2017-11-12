@@ -1,0 +1,18 @@
+{
+  "card": [
+    {
+      "name": "Bank of America",
+      "exp": "04/20",
+      "cvv": "211",
+      "last4": "2456",
+      "photo": "http://pinstor.us/wp-content/uploads/2017/02/Bank-of-America-Cash-Rewards-Visa.jpg"
+    },
+    {
+      "name": "Chase",
+      "exp": "04/20",
+      "cvv": "211",
+      "last4": "4585",
+      "photo": "https://creditcards.chase.com/R-Marketplace/1110008/images/cardart/sapphire_preferred_card.png"
+    }
+  ]
+}

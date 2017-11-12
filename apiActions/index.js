@@ -18,3 +18,15 @@ export function optionIntent() {
 export function purchase() {
   return 'action.purchase'
 }
+
+export function money() {
+  return 'money.input'
+}
+
+export function accounting() {
+  return 'action.accounting'
+}
+
+export function rating() {
+  return 'action.rating'
+}

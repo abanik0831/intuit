@@ -30,10 +30,19 @@
         {
             "name": "David Frum",
             "skills": ["electrician"],
-            "rating": 3,
+            "rating": 4,
             "photo": "https://cdn.trade-schools.net/static/graphics/become-an-electrician-1.jpg",
             "location": "Redwood City",
             "hourlyRate": "18",
+            "phone": ""
+        },
+        {
+            "name": "Donald Trump",
+            "skills": ["electrician"],
+            "rating": 1,
+            "photo": "http://www.cdelec.co.uk/media//commercial-electrician_1.jpg",
+            "location": "Redwood City",
+            "hourlyRate": "41",
             "phone": ""
         },
         {
@@ -43,6 +52,15 @@
             "photo": "http://www.businessmediagroup.co.uk/wp-content/uploads/2015/12/Virtual-Assistant.jpg",
             "location": "Sunnyvale",
             "hourlyRate": "40",
+            "phone": ""
+        },
+        {
+            "name": "Mary Gane Watson",
+            "skills": ["assistant"],
+            "rating": 4,
+            "photo": "https://cdn.xl.thumbs.canstockphoto.com/canstock14668378.jpg",
+            "location": "Sunnyvale",
+            "hourlyRate": "49",
             "phone": ""
         },
         {
