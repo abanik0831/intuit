@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "castv2-client": "^1.1.2",
     "express": "4.14.0",
+    "google-tts-api": "0.0.1",
     "gulp-messenger": "0.25.3",
     "lodash": "4.17.2",
     "mongodb": "^2.2.33",
@@ -66,8 +68,6 @@
     "babel-preset-node6": "^11.0.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.13.0",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
     "xml2json": "^0.11.0",
     "html-convert": "^2.1.7"
   },

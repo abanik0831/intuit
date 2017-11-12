@@ -10,6 +10,7 @@ const chalk   = require('chalk')
 const _       = require('lodash')
 const bodyParser = require('body-parser')
 const googleAssitant = require('./googleAssistant')
+const pushNotification = require('./googleAssistant/pushNotification')
 const nexmo = require('./nexmo/nexmo')
 const db = require('./db/db')
 const secret = require('./secret.json')
@@ -32,7 +33,7 @@ app.get('/send-sms', (req, res) => {
   nexmo.sendSms(secret.testWorkerPhone, text)
   res.status(200)
   res.end('done')
-});
+})
 
 app.get('/sms-webhook', (req, res) => {
   console.log('Received /sms-webhook request')
@@ -46,7 +47,11 @@ app.get('/sms-webhook', (req, res) => {
   nexmo.sendSms(secret.testCompanyPhone, text)
   res.status(200)
   res.end('done')
-});
+})
+
+app.get('/push-notification', (req, res) => {
+  pushNotification.pushVoiceMessage('Welcome to the small business hackathon!');
+})
 
 // lets startup this puppy
 app.listen(app.get('port'), () => {
