@@ -2,8 +2,10 @@ import { ApiAiAssistant } from 'actions-on-google'
 import * as apiAiActions from '../apiActions'
 import  * as services from '../services'
 import storeData from '../db/sample_data.json'
+import secret from '../secret.json'
 import { numToStars } from '../utils'
 import { sendSms } from '../nexmo/nexmo'
+
 
 export function apiAssistant(request, response) {
   const assistant = new ApiAiAssistant({ request: request, response: response })
@@ -60,8 +62,8 @@ export function apiAssistant(request, response) {
   
   async function purchaseType(assistant) {
     // to, companyName, location, time
-    await sendSms('****', 'Intuit', '2600 Marine Way, Mountain View, CA 94043', '5:00 PM PST')
-    
+    const text = `${storeData.companies[0].name} is requesting your services at ${storeData.companies[0].location} at ${'2:00 PM'}. Do you accept? Reply with y(es) or n(o)`
+    await sendSms(secret.testWorkerPhone, text)
     return assistant.ask('purchased')
   }
 

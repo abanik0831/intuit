@@ -66,6 +66,7 @@
     ],
     "companies": [{
         "name": "Intuit",
-        "location": "2600 Marine Way, Mountain View, CA 94043"
+        "location": "2600 Marine Way, Mountain View, CA 94043",
+        "phone": ""
     }]
 }
