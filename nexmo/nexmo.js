@@ -6,14 +6,14 @@ let nexmo;
 
 function init() {
     nexmo = new Nexmo({
-      apiKey: '89277534',
+      apiKey: secret.nexmoApiKey,
       apiSecret: secret.nexmoApiSecret
     })
 }
 
 
 function sendSms(to, text) {
-    const from = '12017628341'
+    const from = secret.nexmoVirtualPhone
     nexmo.message.sendSms(from, to, text)
 }
 

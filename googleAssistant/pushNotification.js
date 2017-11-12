@@ -1,6 +1,9 @@
+import secret from '../secret.json'
+
 const Client = require('castv2-client').Client
 const DefaultMediaReceiver = require('castv2-client').DefaultMediaReceiver
 const GoogleTTS = require('google-tts-api')
+
 const App = {
     playin: false,
     DeviceIp: '',
@@ -43,7 +46,7 @@ const App = {
 }
 
 function pushVoiceMessage(message) {
-    App.run('192.168.0.103', message)
+    App.run(secret.googleHomeIp, message)
 }
 
 export {

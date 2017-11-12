@@ -40,9 +40,11 @@ app.get('/sms-webhook', (req, res) => {
   console.log('req.query', req.query)
   let text;
   if (req.query.keyword === 'YES') {
-    text = `${data.workers[0].name} has accepted your request. They will be at your location at ${'2:00 PM'}`
+    text = `${data.workers[0].name} has accepted your request. They will be at your location at 2:00 PM`
+    pushNotification.pushVoiceMessage(text)
   } else {
     text = `${data.workers[0].name} has declined your request. Not to worry - your Google Assistant can help you find more matches!`
+    pushNotification.pushVoiceMessage(text)
   }
   nexmo.sendSms(secret.testCompanyPhone, text)
   res.status(200)
@@ -50,6 +52,7 @@ app.get('/sms-webhook', (req, res) => {
 })
 
 app.get('/push-notification', (req, res) => {
+  // for testing
   pushNotification.pushVoiceMessage('Welcome to the small business hackathon!');
 })
 
