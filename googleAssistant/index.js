@@ -60,7 +60,7 @@ export function apiAssistant(request, response) {
   
   async function purchaseType(assistant) {
     // to, companyName, location, time
-    await sendSms('14089095234', 'Intuit', '2600 Marine Way, Mountain View, CA 94043', '5:00 PM PST')
+    await sendSms('****', 'Intuit', '2600 Marine Way, Mountain View, CA 94043', '5:00 PM PST')
     
     return assistant.ask('purchased')
   }
